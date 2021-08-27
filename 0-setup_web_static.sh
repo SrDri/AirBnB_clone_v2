@@ -17,7 +17,7 @@ sudo echo -e "$HTML" | sudo tee /data/web_static/releases/test/index.html
 rm -rf /data/web_static/current
 ln -s /data/web_static/releases/test/ /data/web_static/current
 
-line="location /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}\n"
+line="location /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n"
 sudo sed -i "43i\ $line" /etc/nginx/sites-available/default
 
 sudo service nginx restart
