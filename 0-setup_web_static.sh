@@ -1,23 +1,20 @@
 #!/usr/bin/env bash
 # install and configure arbnb static
 
-sudo apt-get update
-sudo apt-get install -y nginx
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install nginx
 
-sudo mkdir -p /data
-sudo chown -R ubuntu:ubuntu /data
-
-mkdir -p /data/web_static/releases/test/
 mkdir -p /data/web_static/shared/
+mkdir -p /data/web_static/releases/test/
 
-HTML="Holberton school - test"
+HTML="Holberton School - Test"
 
-echo -e "$HTML" | sudo tee /data/web_static/releases/test/index.html
+echo "$HTML" | sudo tee /data/web_static/releases/test/index.html
 
-rm -rf /data/web_static/current
-ln -s /data/web_static/releases/test/ /data/web_static/current
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
-line="location /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n"
-sudo sed -i "43i\ $line" /etc/nginx/sites-available/default
+sudo chown -R ubuntu:ubuntu /data/
 
-sudo service nginx restart
+sudo sed -i '43i\\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n' /etc/nginx/sites-available/default
+sudo service nginx start
