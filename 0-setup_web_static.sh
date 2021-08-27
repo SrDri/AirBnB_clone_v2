@@ -12,7 +12,7 @@ mkdir -p /data/web_static/shared/
 
 HTML="Holberton school - test"
 
-sudo echo -e "$HTML" | sudo tee /data/web_static/releases/test/index.html
+echo -e "$HTML" | sudo tee /data/web_static/releases/test/index.html
 
 rm -rf /data/web_static/current
 ln -s /data/web_static/releases/test/ /data/web_static/current
