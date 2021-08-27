@@ -44,3 +44,5 @@ file.json
 models/engine/__pycache__/db_storage.cpython-38.pyc
 test_params_create
 0-transfer_file
+__pycache__/1-pack_web_static.cpython-38.pyc
+versions/web_static_20210827072547.tgz
